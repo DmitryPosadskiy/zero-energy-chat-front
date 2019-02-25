@@ -3,7 +3,9 @@ import { SEND_MESSAGE, RECEIVE_MESSAGE } from './URL';
 import { SEND_MESSAGE_SUCCESS, RECEIVE_MESSAGE_SUCCESS } from './ActionType';
 
 export const sendMessage = (message) => dispatch => {
-	axios.post(SEND_MESSAGE, message)
+	axios.post(SEND_MESSAGE, message, { headers: {
+		'Content-Type': 'application/json'
+	}})
 		.then(result => {
 			dispatch({
 				type: SEND_MESSAGE_SUCCESS,
